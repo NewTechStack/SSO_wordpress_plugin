@@ -39,7 +39,7 @@ function sso_input($option_name){
     $key = esc_attr($key);
     $ret = '<input type="text" name="' . $option_name . '" value="' . $key . '" ' . ( $key_exist ? 'disabled' : '') .'/>';
     if ( $key_exist ) {
-       $ret .= '<input type="hidden" name="' . $option_name . '" value="' . $key . '" ' . ( $key_exist ? 'disabled' : '') .'/>';   
+       $ret .= '<input type="hidden" name="' . $option_name . '" value="' . $key . '" />';   
     }
     return $ret;
 }
