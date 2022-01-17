@@ -10,6 +10,7 @@ Author URI: https://sso.rocketbonds.fr
 
 add_action('admin_menu', 'mt_add_pages');
 
+
 function mt_add_pages() {
     // Add a new submenu under Settings:
     add_options_page(_('SSO', 'rocketbonds-sso'), _('SSO', 'rocketbonds-sso'), 'manage_options', 'rocketbonds_sso', 'sso_settings_page');
@@ -74,5 +75,22 @@ function sso_settings_page() {
          '</form>' .
          '</div>';
 }
+
+register_activation_hook( __FILE__, 'enable_sso' );
+register_deactivation_hook( __FILE__, 'disable_sso' );
+register_uninstall_hook(__FILE__, 'disable_sso');
+
+function enable_sso() {
+       $actual_path = plugin_dir_path( __FILE__ );
+       copy($actual_path . '/wp-loginsso.php', ABSPATH . '/wp-loginsso2.php');
+       copy($actual_path . '/wp-loginssoadd.php', ABSPATH . '/wp-loginssoadd.php')
+}
+
+function disable_sso() {
+    $actual_path = plugin_dir_path( __FILE__ );
+    unlink(ABSPATH . '/wp-loginsso2.php')
+    unlink(ABSPATH . '/wp-loginssoadd.php')
+}
+
 
 ?>
