@@ -70,7 +70,7 @@ function sso_settings_page() {
          '<td>' . sso_input('sso_back') . '</td>'.
          '</tr>' .
          '</table>' .
-         submit_button() .
+         get_submit_button() .
          '</form>' .
          '</div>';
 }
