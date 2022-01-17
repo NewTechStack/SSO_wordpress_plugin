@@ -29,10 +29,10 @@ function sso_input($option_name){
     if ( $settings_str != false ) {
       $settings = json_decode($settings_str, true);
     }
-    $key_exist = False;
+    $key_exist = false;
     if (array_key_exists($option_name, $settings) && strlen($settings[$option_name]) > 0 ) {
-        $key = $settings[$option_name]);
-        $key_exist = True;
+        $key = $settings[$option_name];
+        $key_exist = true;
     } else {
         $key = get_option($option_name);
     }
